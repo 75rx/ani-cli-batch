@@ -7,4 +7,11 @@ This script is just a wrapper for the ani-cli application developed by pystardus
 ## Installation
 1. Head to pystardust's ani-cli github and install it for your OS.
 2. Clone this repository locally
-3. Edit the script's shebang
+3. Use a text editor of your choice to edit the shebang in the main script, ani-cli-batch.sh. If you do not know what this means, just remove the first line in ani-cli-batch.sh.
+4. (Optional but recommended) rename ani-cli-batch.sh to anime and add it to your PATH.
+
+## Usage
+
+Execute the script from a terminal and you'll be greeted with a query asking you what you want to download.
+Once you answer it, the script will run ani-cli to search for your anime. After ani-cli finishes searching, it'll present you with a list of anime it found matching your search query.
+DO NOT SELECT AN ANIME IN THIS LIST! Instead, remember the position of your show in the list
