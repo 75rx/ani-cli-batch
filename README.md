@@ -7,8 +7,7 @@ This script is just a wrapper for the ani-cli application developed by pystardus
 ## Installation
 1. Head to pystardust's ani-cli github and install it for your OS.
 2. Clone this repository locally
-3. Use a text editor to edit the shebang in the main script, ani-cli-batch.sh. If you do not know what this means, just remove the first line in ani-cli-batch.sh. You will be fine even if you completely ignore this step but it is not recommended to do that.
-4. (Optional but recommended) rename ani-cli-batch.sh to anime and add it to your PATH.
+3. Use a text editor to edit the shebang in the main script, ani-cli-batch.sh. Your shebang is the path to your BASH shell, located at /bin/bash in most linux distributions. If you do not understand what any of this means, just get rid of the first line in the script.
 
 ## Usage
 
