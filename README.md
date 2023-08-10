@@ -17,7 +17,7 @@ Once you answer it, the script will run ani-cli to search for your anime. After 
 
 DO NOT SELECT AN ANIME IN THIS LIST!
 
-Instead, remember the position of your show in the list and exit the search results screen by typing exit or any other option that is not listed as a search result.
+Instead, remember the position of your show in the list and exit the search results screen by typing exit or any other option that is not listed as a search result. Yes, I want you to crash the ani-cli script by entering an invalid choice.
 
 The script will ask you to choose the correct selection in the next step. Type in the position / serial number of your anime from the previous screen.
 
