@@ -1,5 +1,28 @@
-#!/data/data/com.termux/files/usr/bin/bash
+#!/bin/sh
 echo "This is a wrapper for ani-cli written by Junaid Shaik, that makes it easier to batch download multiple anime"
+
+# Selecting a download location
+echo; echo "Please provide a download location."
+echo "Default is current running directory."
+echo "Please note, I don't check permissions yet!"
+# TODO: Check perms
+directory="$(pwd)"
+read directory
+while [ ! -d $directory ];
+do
+        echo "Either I don't know what this is or it's not a directory."
+        echo "Please provide a download location:"
+        read directory
+done
+if [[ "" == "$directory" ]];
+then
+        echo "Keeping current directory."
+else
+        echo "Changing to $directory."
+        cd $directory
+fi
+echo
+
 
 addanime=true
 command="ani-cli -d"
