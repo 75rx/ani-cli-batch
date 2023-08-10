@@ -29,6 +29,7 @@ The downloader is currently experiencing problems so asking this script to direc
 
 # To-Do
 
+- [ ] Fix the script's downloader and get rid of the workaround
 - [ ] Write a complimentary script to check for, and manage updates
 
 This is my first bash program. I know it isn't beautiful and the code requires better documentation but I wrote this for myself after watching 2 videos about bash scripting on youtube and then decided to share it online.
