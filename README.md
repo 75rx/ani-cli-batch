@@ -27,4 +27,8 @@ Follow the on-screen instructions and you will have added your anime to the down
 
 The downloader is currently experiencing problems so asking this script to directly download the entire download queue will result in a failure. However, there is a very simple solution you can temporarily use to work around this problem. After you've finished adding all of your anime to the download queue, print out the download command using the script's menu, copy it and execute it as you would any other command.
 
+# To-Do
+
+- [ ] Write a complimentary script to check for, and manage updates
+
 This is my first bash program. I know it isn't beautiful and the code requires better documentation but I wrote this for myself after watching 2 videos about bash scripting on youtube and then decided to share it online.
