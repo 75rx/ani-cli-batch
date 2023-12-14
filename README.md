@@ -11,24 +11,27 @@ This script is just a wrapper for the ani-cli application developed by pystardus
         git clone https://github.com/75rx/ani-cli-batch
    
 3. Modify the shebang if you are on termux (see instructions below)
-4. Add the script to your PATH
+4. Give the scripts appropriate permissions
 
-        sudo mv ./ani-cli-batch/ani-cli-batch /usr/local/bin/ani-cli-batch
-   
-6. Give the script execution permissions
+    chmod +x ani-cli-batch/ani-cli-*
 
-        sudo chmod +x /usr/local/bin/ani-cli-batch
+5. Add the scripts to your PATH (modify this command accordingly if on termux (see instructions below))
 
-7. Clean up the downloaded files
+        sudo mv -t /usr/local/bin/ani-cli-batch ./ani-cli-batch/ani-cli-*
+
+6. Clean up the downloaded files
 
         rm -rf ani-cli-batch
    
 
 ### Instructions for termux users
-If you want to run this script on your android phone using termux, you will have to modify the shebang in the script. You can do that by opening the script using a text editor such as nano or vim and changing the first line to `#!/data/data/com.termux/files/usr/bin/bash`
+#### Step-3
+If you want to run this script on your android phone using termux, you will have to modify the shebang in the ani-cli-batch script. You can do that by opening the script using a text editor such as nano or vim and changing the first line to `#!/data/data/com.termux/files/usr/bin/bash`
 or you can run this command
 
       sed -i s_\#\!\/usr\/bin\/env\ bash_\#\!\/data\/data\/com.termux\/files\/usr\/bin\/bash_g ./ani-cli-batch/ani-cli-batch
+#### Step-5
+ Instructions Pending. Will update this part of the ReadMe later.
       
 ## Usage
 
