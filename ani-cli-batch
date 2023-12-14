@@ -1,6 +1,54 @@
 #!/usr/bin/env bash
 echo "This is a wrapper for ani-cli that makes it easier to batch download multiple anime"
 
+
+# Functions
+
+# Display a menu
+
+# This function draws a menu to get user input. Pass a string of text as the first argument and then pass the menu entry options as other arguments when calling the function.
+# The function will store the user's choice in the first argument / string of text
+
+function showmenu() {
+        echo "Choose an option by selecting it's S.no:"
+        # Define variables
+        # i is used to iterate over the arguments passed to the function and to display them as a numbered list
+        # j is used to skip displaying the first argument as it isn't an option to be displayed but a way to hold the user choice
+        local i=1
+        local j=1
+        # Draw a menu and list the options
+        for option in "$@"; do
+                if [[ $j -eq 1 ]]; then
+                        let "j++"
+                else
+                        echo"";
+                        echo -n "        $i."; echo "$option"
+                        echo;
+                        let "i++"
+                fi
+        done
+        # Read the user choice
+        read -n 1 choice
+        echo ""
+        # Iterate over the arguments (except the first one) using the variable 'a' to locate the user's choice
+        local a=1
+        local b=1
+        for option in "$@"; do
+                if [[ $b -eq 1 ]]; then
+                        let "b++"
+                else
+                        if [[ $a -eq $choice ]]; then
+                                # On finding the choice, set it to the 1st argument so it can be accessed outside of the function
+                                firstarg=$1
+                                eval "$(echo "$firstarg")=$option"
+                                break
+                        else
+                                let "a++"
+                        fi
+                fi
+        done
+}
+
 # Selecting a download location
 echo; echo "Please provide a download location."
 echo "Default is current running directory."
@@ -52,11 +100,10 @@ do
    command=$(echo $command -r $range)
 
    echo "Do you want to specify a download quality (y/n)?"
-   read qualitychoice
+   read -n 1 qualitychoice
 
    if [ $qualitychoice == y ]; then
-      echo "specify the quality"
-      read quality
+      showmenu quality 240p 360p 480p 720p
       command=$(echo $command -q $quality)
    else 
       echo
