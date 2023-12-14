@@ -15,7 +15,11 @@ This script is just a wrapper for the ani-cli application developed by pystardus
 
         sudo mv ./ani-cli-batch/ani-cli-batch /usr/local/bin/ani-cli-batch
    
-6. Clean up the downloaded files
+6. Give the script execution permissions
+
+    sudo chmod +x /usr/local/bin/ani-cli-batch
+
+7. Clean up the downloaded files
 
         rm -rf ani-cli-batch
    
