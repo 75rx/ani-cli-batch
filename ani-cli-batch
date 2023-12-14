@@ -35,7 +35,7 @@ do
 
    echo "Running ani-cli's search operation"
    echo "Exit after finding the correct S.no and episode range"
-   ani-cli $animename
+   ani-cli -d $animename
    #searchresult=$(timeout 5s ani-cli $animename)
    #clear
    #echo $searchresult
