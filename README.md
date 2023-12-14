@@ -17,7 +17,7 @@ This script is just a wrapper for the ani-cli application developed by pystardus
    
 6. Give the script execution permissions
 
-    sudo chmod +x /usr/local/bin/ani-cli-batch
+        sudo chmod +x /usr/local/bin/ani-cli-batch
 
 7. Clean up the downloaded files
 
