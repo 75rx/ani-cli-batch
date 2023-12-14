@@ -1,6 +1,8 @@
 # This script updates the ani-cli-batch script
 
-wget -P ~ https://github.com/75rx/ani-cli-batch/blob/main/ani-cli-batch && chmod +x ani-cli-batch
-echo "Please enter the sudo password to finish updating the script in your PATH"
-echo ""
-sudo mv ~/ani-cli-batch /usr/local/bin/ani-cli-batch && echo "Update Successful"
+#wget -P ~ https://github.com/75rx/ani-cli-batch/blob/main/ani-cli-batch && chmod +x ani-cli-batch
+#echo "Please enter the sudo password to finish updating the script in your PATH"
+#echo ""
+#sudo mv ~/ani-cli-batch /usr/local/bin/ani-cli-batch && echo "Update Successful"
+
+echo "The update script is under development. Please manually download the script from 75rx's Github and move it to your PATH"
