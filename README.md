@@ -24,7 +24,7 @@ This script is just a wrapper for the ani-cli application developed by pystardus
 If you want to run this script on your android phone using termux, you will have to modify the shebang in the script. You can do that by opening the script using a text editor such as nano or vim and changing the first line to `#!/data/data/com.termux/files/usr/bin/bash`
 or you can run this command
 
-      sed -i s_"#!/usr/bin/env bash"_"#!/data/data/com.termux/files/usr/bin/bash"_g ./ani-cli-batch/ani-cli-batch
+      sed -i s_\#\!\/usr\/bin\/env\ bash_\#\!\/data\/data\/com.termux\/files\/usr\/bin\/bash_g ./ani-cli-batch/ani-cli-batch
       
 ## Usage
 
