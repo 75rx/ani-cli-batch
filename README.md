@@ -1,14 +1,23 @@
 # ani-cli-batch
-An Ani-cli wrapper to simplify batch downloading multiple anime / seasons of the same anime
+An Ani-cli wrapper written in BASH to simplify batch downloading multiple anime / seasons of the same anime
 
 ### Note
 This script is just a wrapper for the ani-cli application developed by pystardust. You need to have the original ani-cli application installed to use this. Find it [here](https://github.com/pystardust/ani-cli)
 
 ## Installation
-1. Head to pystardust's ani-cli github and install it for your OS.
+1. Head to [pystardust's ani-cli github](https://github.com/pystardust/ani-cli) and install it for your OS.
 2. Clone this repository locally
-3. Use a text editor to edit the shebang in the main script, ani-cli-batch.sh. Your shebang is the path to your BASH shell, located at /bin/bash in most linux distributions. If you do not understand what any of this means, just get rid of the first line in the script.
+    git clone https://github.com/75rx/ani-cli-batch
+3. Modify the shebang if you are on termux (see instructions below)
+4. Add the script to your PATH
+    sudo mv ./ani-cli-batch/ani-cli-batch /usr/local/bin/ani-cli-batch
+5. Clean up the downloaded files
+    rm -r ani-cli-batch
 
+### Instructions for termux users
+If you want to run this script on your android phone using termux, you will have to modify the shebang in the script. You can do that by opening the script using a text editor such as nano or vim and changing the first line to `#!/data/data/com.termux/files/usr/bin/bash`
+or you can run this command
+      sed -i s_"#!/usr/bin/env bash"_"#!/data/data/com.termux/files/usr/bin/bash"_g ./ani-cli-batch/ani-cli-batch
 ## Usage
 
 Execute the script from a terminal and you'll be greeted with a query asking you what you want to download.
