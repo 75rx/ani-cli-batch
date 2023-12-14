@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-echo "This is a wrapper for ani-cli written by Junaid Shaik, that makes it easier to batch download multiple anime"
+echo "This is a wrapper for ani-cli that makes it easier to batch download multiple anime"
 
 # Selecting a download location
 echo; echo "Please provide a download location."
