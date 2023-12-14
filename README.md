@@ -17,7 +17,7 @@ This script is just a wrapper for the ani-cli application developed by pystardus
    
 6. Clean up the downloaded files
 
-        rm -r ani-cli-batch
+        rm -rf ani-cli-batch
    
 
 ### Instructions for termux users
