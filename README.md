@@ -8,7 +8,7 @@ This script is just a wrapper for the ani-cli application developed by pystardus
 1. Head to [pystardust's ani-cli github](https://github.com/pystardust/ani-cli) and install it for your OS.
 2. Clone this repository locally
 
-    git clone https://github.com/75rx/ani-cli-batch
+        git clone https://github.com/75rx/ani-cli-batch
    
 3. Modify the shebang if you are on termux (see instructions below)
 4. Add the script to your PATH
