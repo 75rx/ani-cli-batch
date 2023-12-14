@@ -13,11 +13,11 @@ This script is just a wrapper for the ani-cli application developed by pystardus
 3. Modify the shebang if you are on termux (see instructions below)
 4. Add the script to your PATH
 
-    sudo mv ./ani-cli-batch/ani-cli-batch /usr/local/bin/ani-cli-batch
+        sudo mv ./ani-cli-batch/ani-cli-batch /usr/local/bin/ani-cli-batch
    
 6. Clean up the downloaded files
 
-    rm -r ani-cli-batch
+        rm -r ani-cli-batch
    
 
 ### Instructions for termux users
