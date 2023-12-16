@@ -28,7 +28,7 @@ If you are on Windows, set up WSL and install this script inside it. (It's just 
 
 7. Clean up the downloaded files
 
-        rm -rf ani-cli-batch
+        rm -rf ./ani-cli-batch
    
 
 ### Instructions for termux users
