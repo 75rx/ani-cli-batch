@@ -112,7 +112,7 @@ do
 
    command=$(echo $command $animename -S $selection)
 
-   echo; echo "What range of episodes do you want to download?"
+   echo; echo "What range of episodes do you want to download? (startep-endep)(eg:- 1-17)"
    read range
 
    command=$(echo $command -r $range)
