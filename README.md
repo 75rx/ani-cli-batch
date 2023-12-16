@@ -10,7 +10,7 @@ If you are on Windows, set up WSL and install this script inside it.
 
 1. Install the dependencies
 
-   - Head to [pystardust's ani-cli github](https://github.com/pystardust/ani-cli) and install it for your OS.
+   - Head to [pystardust's ani-cli github](https://github.com/pystardust/ani-cli) and install it for your os (install the linux version on wsl if you are using Windows).
    - Install git (optional) (only if you want to use the ani-cli-batch-update feature to update the script)
    
 3. Clone this repository locally
