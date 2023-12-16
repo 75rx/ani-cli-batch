@@ -55,6 +55,19 @@ Instead, remember the position of your show in the list and exit the search resu
 
 The script will ask you to choose the correct selection in the next step. Type in the position / serial number of your anime from the previous screen.
 
+## Uninstalling
+On Linux
+
+   sudo rm /usr/local/bin/ani-cli-batc*
+   
+On Android
+   Remove the script from your PATH if you have added them into a custom folder in your PATH. If you followed this guide, then:
+
+      rm /data/data/com.termux/files/usr/bin/ani-cli-batch
+
+   You can also run `which ani-cli-batch` to see where the files are located and just delete them.
+
+
 Follow the on-screen instructions and you will have added your anime to the download queue.
 
 
