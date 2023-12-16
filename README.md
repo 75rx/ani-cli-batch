@@ -48,6 +48,8 @@ or you can run this command
 
 Execute the script from a terminal and you'll be greeted with a query asking you what you want to download.
 
+   ani-cli-batch
+
 Once you answer it, the script will run ani-cli to search for your anime. After ani-cli finishes searching, it'll present you with a list of anime it found matching your search query.
 
 DO NOT SELECT AN ANIME IN THIS LIST!
