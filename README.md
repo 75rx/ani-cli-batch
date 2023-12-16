@@ -35,8 +35,13 @@ or you can run this command
 
       sed -i s_\#\!\/usr\/bin\/env\ bash_\#\!\/data\/data\/com.termux\/files\/usr\/bin\/bash_g ./ani-cli-batch/ani-cli-batch
 #### Step-5
- Instructions Pending. Will update this part of the ReadMe later.
- Add the scripts to your PATH. Do not use the ani-cli-batch-update command as it is not yet configured to run on termux. You can use the rest of the script normally
+ Add the scripts to your PATH. 
+   - If you have a custom directory for your executables, simply move the ani-cli-batch script to that directory
+   - If you do not have any such directory, just execute this command
+     
+        mv ./ani-cli-batch/ani-cli-batch /data/data/com.termux/files/usr/bin
+      
+ WARNING: Do not use the ani-cli-batch-update command on your phone as it is not yet configured to run on termux. You can use the rest of the script normally
       
 ## Usage
 
