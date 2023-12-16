@@ -122,6 +122,7 @@ do
    read -n 1 qualitychoice
 
    if [ $qualitychoice == y ]; then
+      echo
       showmenufor quality 240p 360p 480p 720p
       command=$(echo $command -q $quality)
    else 
