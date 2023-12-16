@@ -58,6 +58,8 @@ Instead, remember the position of your show in the list and exit the search resu
 
 The script will ask you to choose the correct selection in the next step. Type in the position / serial number of your anime from the previous screen.
 
+Follow the on-screen instructions and you will have added your anime to the download queue.
+
 ## Uninstalling
 On Linux
 
@@ -71,7 +73,6 @@ On Android
    You can also run `which ani-cli-batch` to see where the files are located and just delete them.
 
 
-Follow the on-screen instructions and you will have added your anime to the download queue.
 
 
 This is my first bash program. I know it isn't beautiful and the code requires better documentation but I wrote this for myself after watching 2 videos about bash scripting on youtube and then decided to share it online.
