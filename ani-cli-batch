@@ -5,7 +5,7 @@
 # Variables
 
 
-# A few variables that are used in multiple locations in the script
+# A few variables that are used multiple times throughout the script
 
 BASHLOCATION=$(which bash)
 command="ani-cli -d"
