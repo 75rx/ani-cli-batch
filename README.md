@@ -57,8 +57,5 @@ The script will ask you to choose the correct selection in the next step. Type i
 
 Follow the on-screen instructions and you will have added your anime to the download queue.
 
-### Note
-
-The downloader is currently experiencing problems so asking this script to directly download the entire download queue will result in a failure. However, there is a very simple solution you can temporarily use to work around this problem. After you've finished adding all of your anime to the download queue, print out the download command using the script's menu, copy it and execute it as you would any other command.
 
 This is my first bash program. I know it isn't beautiful and the code requires better documentation but I wrote this for myself after watching 2 videos about bash scripting on youtube and then decided to share it online.
