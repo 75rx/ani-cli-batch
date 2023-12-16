@@ -37,9 +37,8 @@ or you can run this command
 #### Step-5
  Add the scripts to your PATH. 
    - If you have a custom directory for your executables, simply move the ani-cli-batch script to that directory
-   - If you do not have any such directory, just execute this command
-     
-        mv ./ani-cli-batch/ani-cli-batch /data/data/com.termux/files/usr/bin
+   - If you do not have any such directory, just execute this command     
+           mv ./ani-cli-batch/ani-cli-batch /data/data/com.termux/files/usr/bin
       
  WARNING: Do not use the ani-cli-batch-update command on your phone as it is not yet configured to run on termux. You can use the rest of the script normally
       
