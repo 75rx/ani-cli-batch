@@ -36,6 +36,7 @@ or you can run this command
       sed -i s_\#\!\/usr\/bin\/env\ bash_\#\!\/data\/data\/com.termux\/files\/usr\/bin\/bash_g ./ani-cli-batch/ani-cli-batch
 #### Step-5
  Instructions Pending. Will update this part of the ReadMe later.
+ Add the scripts to your PATH. Do not use the ani-cli-batch-update command as it is not yet configured to run on termux. You can use the rest of the script normally
       
 ## Usage
 
