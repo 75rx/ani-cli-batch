@@ -17,7 +17,7 @@ This script is just a wrapper for the ani-cli application developed by pystardus
 4. Modify the shebang if you are on termux (see instructions below)
 5. Give the scripts appropriate permissions
 
-    chmod +x ani-cli-batch/ani-cli-*
+       chmod +x ani-cli-batch/ani-cli-*
 
 6. Add the scripts to your PATH (modify this command accordingly if on termux (see instructions below))
 
