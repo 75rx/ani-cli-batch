@@ -103,7 +103,7 @@ do
    echo "What do you want to download?"
    read animename
 
-   echo "Running ani-cli's search operation"
+   echo; echo "Running ani-cli's search operation"
    echo "Exit after finding the correct S.no and episode range"
    echo ""
    ani-cli -d $animename
