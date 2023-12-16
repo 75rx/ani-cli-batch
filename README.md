@@ -5,21 +5,25 @@ An Ani-cli wrapper written in BASH to simplify batch downloading multiple anime 
 This script is just a wrapper for the ani-cli application developed by pystardust. You need to have the original ani-cli application installed to use this. Find it [here](https://github.com/pystardust/ani-cli)
 
 ## Installation
-1. Head to [pystardust's ani-cli github](https://github.com/pystardust/ani-cli) and install it for your OS.
-2. Clone this repository locally
+1. Install the dependencies
+
+        1. Head to [pystardust's ani-cli github](https://github.com/pystardust/ani-cli) and install it for your OS.
+        2. Install git (optional) (only if you want to use the ani-cli-batch-update feature to update the script)
+   
+3. Clone this repository locally
 
         git clone https://github.com/75rx/ani-cli-batch
    
-3. Modify the shebang if you are on termux (see instructions below)
-4. Give the scripts appropriate permissions
+4. Modify the shebang if you are on termux (see instructions below)
+5. Give the scripts appropriate permissions
 
     chmod +x ani-cli-batch/ani-cli-*
 
-5. Add the scripts to your PATH (modify this command accordingly if on termux (see instructions below))
+6. Add the scripts to your PATH (modify this command accordingly if on termux (see instructions below))
 
         sudo mv -t /usr/local/bin/ani-cli-batch ./ani-cli-batch/ani-cli-*
 
-6. Clean up the downloaded files
+7. Clean up the downloaded files
 
         rm -rf ani-cli-batch
    
@@ -50,10 +54,5 @@ Follow the on-screen instructions and you will have added your anime to the down
 ### Note
 
 The downloader is currently experiencing problems so asking this script to directly download the entire download queue will result in a failure. However, there is a very simple solution you can temporarily use to work around this problem. After you've finished adding all of your anime to the download queue, print out the download command using the script's menu, copy it and execute it as you would any other command.
-
-# To-Do
-
-- [ ] Fix the script's downloader and get rid of the workaround
-- [ ] Write a complimentary script to check for, and manage updates
 
 This is my first bash program. I know it isn't beautiful and the code requires better documentation but I wrote this for myself after watching 2 videos about bash scripting on youtube and then decided to share it online.
