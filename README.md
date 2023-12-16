@@ -6,7 +6,7 @@ This script is just a wrapper for the ani-cli application developed by pystardus
 
 ## Installation
 
-If you are on Windows, set up WSL and install this script inside it.
+If you are on Windows, set up WSL and install this script inside it. (It's just a toggle in the settings app)
 
 1. Install the dependencies
 
