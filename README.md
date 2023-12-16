@@ -61,7 +61,7 @@ The script will ask you to choose the correct selection in the next step. Type i
 ## Uninstalling
 On Linux
 
-   sudo rm /usr/local/bin/ani-cli-batc*
+      sudo rm /usr/local/bin/ani-cli-batc*
    
 On Android
    Remove the script from your PATH if you have added them into a custom folder in your PATH. If you followed this guide, then:
