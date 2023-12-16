@@ -7,9 +7,8 @@
 
 # A few variables that are used in multiple locations in the script
 
-#BASHLOCATION=$(grep bash $(which ani-cli-batch) | sed s/\#\!//g)
 BASHLOCATION=$(which bash)
-
+command="ani-cli -d"
 
 
 # Functions
@@ -17,14 +16,14 @@ BASHLOCATION=$(which bash)
 
 # Display a menu
 
-# This function draws a menu to get user input. Pass a string of text as the first argument and then pass the menu entry options as other arguments when calling the function.
-# The function will store the user's choice in the first argument / string of text
+# This function draws a menu to get user input. Pass a string of text as the first argument to store the user response in, and then pass the menu entry options as other arguments when calling the function.
+# The function will store the user's choice as the value of a newly created variable, with a name matching the string of text / first argument passed to the function.
 
 function showmenufor() {
         echo "Choose an option by selecting it's S.no:"
         # Define variables
         # i is used to iterate over the arguments passed to the function and to display them as a numbered list
-        # j is used to skip displaying the first argument as it isn't an option to be displayed but a way to hold the user choice
+        # j is used to skip displaying the first argument as it isn't an option to be displayed but a way to store the user response
         local i=1
         local j=1
         # Draw a menu and list the options
@@ -33,7 +32,7 @@ function showmenufor() {
                         let "j++"
                 else
                         echo"";
-                        echo -n "        $i."; echo "$option"
+                        echo -n "   $i."; echo "$option"
                         echo;
                         let "i++"
                 fi
@@ -95,7 +94,6 @@ echo
 # Asking for instructions
 
 addanime=true
-command="ani-cli -d"
 validchoice=false
 
 while [ $addanime == true ]
