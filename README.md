@@ -5,6 +5,9 @@ An Ani-cli wrapper written in BASH to simplify batch downloading multiple anime 
 This script is just a wrapper for the ani-cli application developed by pystardust. You need to have the original ani-cli application installed to use this. Find it [here](https://github.com/pystardust/ani-cli)
 
 ## Installation
+
+If you are on Windows, set up WSL and install this script inside it.
+
 1. Install the dependencies
 
    - Head to [pystardust's ani-cli github](https://github.com/pystardust/ani-cli) and install it for your OS.
