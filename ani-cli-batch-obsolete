@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+
+# This script was updated and modified by Junaid Shaik. It is obsolete. Do Not Work On This.
+
 echo "This is a wrapper for ani-cli that makes it easier to batch download multiple anime"
 
 
