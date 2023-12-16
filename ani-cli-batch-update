@@ -1,8 +1,12 @@
 # This script updates the ani-cli-batch script
 
+echo "Downloading update"
+
 cd ~
-git clone https://github.com/75rx/ani-cli-batch
+git clone https://github.com/75rx/ani-cli-batch --quiet
 chmod +x ~/ani-cli-batch/ani-cli-*
+
+echo "Done!"; echo ""
 
 echo "Please enter the sudo password to finish updating the script in your PATH"
 echo ""
