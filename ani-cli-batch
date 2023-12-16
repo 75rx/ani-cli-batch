@@ -106,9 +106,6 @@ do
    echo ""
    ani-cli -d $animename
    echo ""
-   #searchresult=$(timeout 5s ani-cli $animename)
-   #clear
-   #echo $searchresult
 
    echo "What number on the list was your anime?"
    read selection
@@ -139,6 +136,7 @@ do
    echo "4.Cancel and quit (cancel)"
    read instruction
    #showmenufor instruction "Add\ more\ anime" "Start\ downloading" "Print\ the\ saved\ download\ command" "Cancel\ and\ quit"
+
    until [ $validchoice == true ]
    do
       case $instruction in
