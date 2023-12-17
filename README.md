@@ -6,7 +6,7 @@ This script is just a wrapper for the ani-cli application developed by pystardus
 
 ## Installation
 
-If you are on Windows, set up WSL and install this script inside it. (It's just a toggle in the settings app)
+If you are on Windows, set up WSL and install this script inside it. (It's just a toggle in the settings app or you can open a command prompt window and use `wsl --install`)
 
 1. Install the dependencies
 
@@ -57,7 +57,7 @@ Once you answer it, the script will run ani-cli to search for your anime. After 
 
 DO NOT SELECT AN ANIME IN THIS LIST!
 
-Instead, remember the position of your show in the list and exit the search results screen by typing `ctrl+c`. You can also exit by typing exit or any other option that is not listed as a search result into ani-cli's textbox. Yes, I want you to crash the ani-cli script by entering an invalid choice.
+Instead, remember the position of your show in the list and exit the search results screen by sending a kill signal by pressing `ctrl` and `c` together. You can also exit by typing exit or any other option that is not listed as a search result into ani-cli's textbox. Yes, I want you to crash the ani-cli script by entering an invalid choice.
 
 The script will ask you to choose the correct selection in the next step. Type in the position / serial number of your anime from the previous screen.
 
