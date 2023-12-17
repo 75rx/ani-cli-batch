@@ -28,6 +28,7 @@ function showmenufor() {
         local j=1
         # Draw a menu and list the options
         for option in "$@"; do
+                # This if condition makes the for loop skip displaying the first argument as a menu entry because j=1 when the loop is running for the first arg, but will have changed to 2 by the time it runs for the 2nd arg in $@.
                 if [[ $j -eq 1 ]]; then
                         let "j++"
                 else
