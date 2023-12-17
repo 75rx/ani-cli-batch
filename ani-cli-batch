@@ -69,7 +69,7 @@ clear; echo "This is a wrapper for ani-cli that makes it easier to batch downloa
 
 
 # Selecting a download location
-# This code was contributed by butyraldehyde on github, so I'm thanking them here!
+# The code for selecting a download location was contributed by butyraldehyde on github, so I'm thanking them here!
 
 echo; echo "Please provide a download location or press enter to download into the current directory"
 echo "Please note, I don't check permissions yet!"
