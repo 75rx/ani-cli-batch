@@ -118,7 +118,7 @@ do
 
    command=$(echo $command -r $range)
 
-   echo; echo "Do you want to specify a download quality (y/n)?"
+   echo; echo "Do you want to specify a download quality (default is 1080p)? (y/n)"
    echo "(ani-cli will default to the highest quality if specified video quality is not found)"
    read -n 1 qualitychoice
 
