@@ -130,17 +130,17 @@ do
       echo
    fi
 
-   clear
-   echo "What do you want to do?"
-   echo "1.Add more anime (add)"
-   echo "2.Start Downloading (download)"
-   echo "3.Print the download command (print)"
-   echo "4.Cancel and quit (cancel)"
-   read instruction
-   #showmenufor instruction "Add\ more\ anime" "Start\ downloading" "Print\ the\ saved\ download\ command" "Cancel\ and\ quit"
-
    until [ $validchoice == true ]
    do
+      clear
+      echo "What do you want to do?"
+      echo "1.Add more anime (add)"
+      echo "2.Start Downloading (download)"
+      echo "3.Print the download command (print)"
+      echo "4.Cancel and quit (cancel)"
+      read instruction
+      #showmenufor instruction "Add\ more\ anime" "Start\ downloading" "Print\ the\ saved\ download\ command" "Cancel\ and\ quit"
+
       case $instruction in
          1|add)
             command=$(echo $command "; ani-cli -d" )
