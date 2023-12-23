@@ -161,9 +161,10 @@ do
             ;;
          3|print)
             clear && echo "Printing the download command."
-            echo $command
-            echo "respond with a ? to view all the available choices"
+            echo; echo $command
             validchoice=false
+            echo; echo "Press any key to continue."
+            read -n 1 whyisdeadpoolsocool
             ;;
          4|cancel)
             echo "Cancelling pending operations and quitting."
