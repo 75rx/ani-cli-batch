@@ -79,3 +79,5 @@ On Android
 
 
 This is my first bash program. I know it isn't beautiful and the code requires better documentation but I wrote this for myself after watching 2 videos about bash scripting on youtube and then decided to share it online.
+
+Disclaimer: This software is in no way officially affiliated with ani-cli. It wasn't made by the developers of ani-cli either.
