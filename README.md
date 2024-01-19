@@ -24,7 +24,7 @@ If you are on Windows, set up WSL and install this script inside it. (It's just 
 
 6. Add the scripts to your PATH (modify this command accordingly if on termux (see instructions below))
 
-        sudo mv -t /usr/local/bin/ani-cli-batch ./ani-cli-batch/ani-cli-*
+        sudo mv ./ani-cli-batch/ani-cli-* /usr/local/bin/
 
 7. Clean up the downloaded files
 
