@@ -175,7 +175,7 @@ do
             echo "Please make a valid choice!"
             echo "Valid choices include 1, 2, 3, 4, add, download, print and cancel. Press any key to continue"
             validchoice=false
-            read -n 1 dattebayo
+            read -n 1 icannotkeepcomingupwithcoolvariablenamessothisonewillbecalleddattebayo
             ;;
       esac
    done
