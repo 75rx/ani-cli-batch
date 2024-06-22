@@ -18,7 +18,7 @@ This script is just a wrapper for the ani-cli application developed by pystardus
 
 ### Windows
 
-ani-cli-batch is a BASH script. You can provide your own BASH environment with all of the dependencies installed or you can simple follow this tutorial to set one up.
+ani-cli-batch is a BASH script. You can provide your own BASH environment with all of the dependencies installed or you can simply follow this tutorial to set one up.
 
 Fire up the windows terminal or a powershell window and run these commands
 
