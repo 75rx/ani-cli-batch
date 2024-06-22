@@ -1,83 +1,150 @@
 # ani-cli-batch
-An Ani-cli wrapper written in BASH to simplify batch downloading multiple anime / seasons of the same anime
+An ani-cli wrapper written in BASH to automate downloading different anime
 
 ### Note
-This script is just a wrapper for the ani-cli application developed by pystardust. You need to have the original ani-cli application installed to use this. Find it [here](https://github.com/pystardust/ani-cli)
+This script is just a wrapper for the ani-cli application developed by pystardust. You need to have the original ani-cli application installed along with it's dependencies, to use this. Find it [here](https://github.com/pystardust/ani-cli)
 
 ## Installation
 
-If you are on Windows, set up WSL and install this script inside it. (It's just a toggle in the settings app or you can open a command prompt window and use `wsl --install`)
+### Dependencies
+1. ani-cli
+2. wget
+3. ani-cli's dependencies to run ani-cli. If you cannot install all of ani-cli's dependencies, at least try and get these:
+    - grep
+    - sed
+    - curl
+    - fzf
+    - aria2c
+
+### Windows
+
+ani-cli-batch is a BASH script. You can provide your own BASH environment with all of the dependencies installed or you can simple follow this tutorial to set one up.
+
+Fire up the windows terminal or a powershell window and run these commands
+
+1. Install wsl
+
+    wsl --install -d debian
+    
+Follow the on-screen prompts.
+After the installation completes, close the terminal window, find an app called 'debian' in your start menu and launch it.
+
+2. Install the dependencies
+
+In the debian terminal:
+
+    sudo apt update && sudo apt install grep sed curl wget fzf aria2 ani-cli -y
+
+3. Download and configure this script
+
+    wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch
+    wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch-update
+    chmod +x ~/ani-cli-batch
+    chmod +x ~/ani-cli-batch-update
+
+4. Move them to your PATH to access them from anywhere and enable the update functionality
+
+    sudo mv -t /usr/local/bin ./ani-cli-batch ./ani-cli-batch-update
+
+### Linux
 
 1. Install the dependencies
 
-   - Head to [pystardust's ani-cli github](https://github.com/pystardust/ani-cli) and install it for your os (install the linux version on wsl if you are using Windows).
-   - Install git (optional) (only if you want to use the ani-cli-batch-update feature to update the script)
-   
-3. Clone this repository locally
+Use your package manager to download and install the dependencies
 
-        git clone https://github.com/75rx/ani-cli-batch
-   
-4. Modify the shebang if you are on termux (see instructions below)
-5. Give the scripts appropriate permissions
+a. On Debian / Ubuntu based systems like LinuxMint:
 
-       chmod +x ani-cli-batch/ani-cli-*
+    sudo apt install grep sed curl wget fzf aria2 ani-cli -y
 
-6. Add the scripts to your PATH (modify this command accordingly if on termux (see instructions below))
+b. On RedHat based systems like Fedora and CentOS:
 
-        sudo mv ./ani-cli-batch/ani-cli-* /usr/local/bin/
+- Install ani-cli. The official installation method, after installing ani-cli's dependencies, according to pystardust's repository at the time of writing this documentation is:
 
-7. Clean up the downloaded files
+    sudo dnf copr enable derisis13/ani-cli
+    sudo dnf install ani-cli
 
-        rm -rf ./ani-cli-batch
-   
+- Install wget
 
-### Instructions for termux users
-#### Step-3
-If you want to run this script on your android phone using termux, you will have to modify the shebang in the ani-cli-batch script. You can do that by opening the script using a text editor such as nano or vim and changing the first line to `#!/data/data/com.termux/files/usr/bin/bash`
-or you can run this command
+    sudo dnf install wget
 
-      sed -i s_\#\!\/usr\/bin\/env\ bash_\#\!\/data\/data\/com.termux\/files\/usr\/bin\/bash_g ./ani-cli-batch/ani-cli-batch
-#### Step-5
- Add the scripts to your PATH. 
-   - If you have a custom directory for your executables, simply move the ani-cli-batch script to that directory
-   - If you do not have any such directory, just execute this command     
+2. Download and configure the ani-cli-batch scripts
 
-           mv ./ani-cli-batch/ani-cli-batch /data/data/com.termux/files/usr/bin
+    wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch
+    wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch-update
+    chmod +x ~/ani-cli-batch
+    chmod +x ~/ani-cli-batch-update
 
+3. Move them to your PATH. Place them in /usr/local/bin to enable seamless updates with ani-cli-batch-update
 
- WARNING: Do not use the ani-cli-batch-update command on your phone as it is not yet configured to run on termux. You can use the rest of the script normally
-      
+    sudo mv -t /usr/local/bin/ ./ani-cli-batch ./ani-cli-batch-update
+
+### Android
+
+1. Download and install termux from [f-droid](https://f-droid.org/en/packages/com.termux/)
+
+Warning: Do not install termux from the playstore. Termux's playstore builds are deprecated. If you cannot access f-droid, use [github](https://github.com/termux/termux-app/releases).
+
+2. In termux, install the dependencies
+
+    termux-change-repo
+
+Then choose OK by pressing the enter key.
+
+    pkg update && pkg install grep sed curl wget fzf aria2 ani-cli -y
+
+3. Download and install ani-cli-batch
+
+    wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch
+    sed -i s_\#\!\/usr\/bin\/env\ bash_\#\!\/data\/data\/com.termux\/files\/usr\/bin\/bash_ ./ani-cli-batch
+    chmod +x ./ani-cli-batch
+    mv ./ani-cli-batch /data/data/com.termux/files/usr/bin
+
 ## Usage
 
-Execute the script from a terminal and you'll be greeted with a query asking you what you want to download.
+### Adding anime to the download queue
 
-      ani-cli-batch
+1. Run the script in a terminal
 
-Once you answer it, the script will run ani-cli to search for your anime. After ani-cli finishes searching, it'll present you with a list of anime it found matching your search query.
+    ani-cli-batch
 
-DO NOT SELECT AN ANIME IN THIS LIST!
+2. Enter the name of the first anime you want to download after you are prompted for it.
+3. ani-cli-batch will run ani-cli to search for your anime. Let ani-cli do it's job and wait until you have the search results
+4. Remember the serial number / position of your anime in the search results list.
+5. DO NOT select your anime from the search results. This will lead to ani-cli loading and downloading just that single anime. Instead, close ani-cli by pressing `CTRL`+`C` together, to get back to ani-cli-batch from ani-cli. You can also crash ani-cli by typing an invalid choice (eg: "exit" or "thisisdefinitelythenameofaverynormalanimethatexists") into ani-cli's textbox.
+6. Enter the position / serial number of your anime from the previous screen, once you get back to ani-cli-batch
+7. Follow the on-screen instructions to specify download quality and other information
 
-Instead, remember the position of your show in the list and exit the search results screen by sending a kill signal by pressing `ctrl` and `c` together. You can also exit by typing exit or any other option that is not listed as a search result into ani-cli's textbox. Yes, I want you to crash the ani-cli script by entering an invalid choice.
+### Updating the script
 
-The script will ask you to choose the correct selection in the next step. Type in the position / serial number of your anime from the previous screen.
+You can run `ani-cli-batch-update` on Windows and Linux to automatically update the script. Update functionality is not supported on android yet. So just follow the installation instructions again, i.e., copy paste these four lines of code into termux:
 
-Follow the on-screen instructions and you will have added your anime to the download queue.
+    wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch
+    sed -i s_\#\!\/usr\/bin\/env\ bash_\#\!\/data\/data\/com.termux\/files\/usr\/bin\/bash_ ./ani-cli-batch
+    chmod +x ./ani-cli-batch
+    mv ./ani-cli-batch /data/data/com.termux/files/usr/bin
 
 ## Uninstalling
-On Linux
 
-      sudo rm /usr/local/bin/ani-cli-batc*
-   
-On Android
-   Remove the script from your PATH if you have added them into a custom folder in your PATH. If you followed this guide, then:
+### On Windows
 
-      rm /data/data/com.termux/files/usr/bin/ani-cli-batch
+Run the following command in your wsl instance (the debian app if you followed this guide), to remove ani-cli-batch without uninstalling WSL or ani-cli.
 
-   You can also run `which ani-cli-batch` to see where the files are located and just delete them.
+    sudo rm /usr/local/bin/ani-cli-*
 
+Refer to ani-cli's official repository for instructions on uninstalling ani-cli.
 
+To remove everything completely (including WSL), go to Settings -> Apps, find Debian / WSL and uninstall it.
 
+### On Linux
 
-This is my first bash program. I know it isn't beautiful and the code requires better documentation but I wrote this for myself after watching 2 videos about bash scripting on youtube and then decided to share it online.
+    sudo rm /usr/local/bin/ani-cli-*
 
-Disclaimer: This software is in no way officially affiliated with ani-cli. It wasn't made by the developers of ani-cli either.
+Refer to ani-cli's official repository for instructions on uninstalling ani-cli.
+
+### On Android
+
+Simply uninstall Termux to get rid of everything, or `sudo rm /data/data/com.termux/files/usr/bin/ani-cli-batch` to remove ani-cli-batch from your termux environment.
+
+Refer to ani-cli's official repository for instructions on uninstalling ani-cli.
+
+Disclaimer: This software is in no way officially affiliated with ani-cli. It wasn't made by the developers of ani-cli. I'm also sorry about the poor code documentation. I wrote this for myself after barely watching a couple of BASH videos and -- on a whim -- decided to share it online.
