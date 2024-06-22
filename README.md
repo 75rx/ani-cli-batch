@@ -23,10 +23,9 @@ ani-cli-batch is a BASH script. You can provide your own BASH environment with a
 Fire up the windows terminal or a powershell window and run these commands
 
 1. Install wsl
-
+```
     wsl --install -d debian
-
-
+```
 Follow the on-screen prompts.
 After the installation completes, close the terminal window, find an app called 'debian' in your start menu and launch it.
 
@@ -37,17 +36,16 @@ In the debian terminal:
     sudo apt update && sudo apt install grep sed curl wget fzf aria2 ani-cli -y
 
 3. Download and configure this script
-
+```
     wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch
     wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch-update
     chmod +x ~/ani-cli-batch
     chmod +x ~/ani-cli-batch-update
-
-
+```
 4. Move them to your PATH to access them from anywhere and enable the update functionality
-
+```
     sudo mv -t /usr/local/bin ./ani-cli-batch ./ani-cli-batch-update
-
+```
 ### Linux
 
 1. Install the dependencies
@@ -61,28 +59,25 @@ a. On Debian / Ubuntu based systems like LinuxMint:
 b. On RedHat based systems like Fedora and CentOS:
 
 - Install ani-cli. The official installation method, after installing ani-cli's dependencies, according to pystardust's repository at the time of writing this documentation is:
-
+```
     sudo dnf copr enable derisis13/ani-cli
     sudo dnf install ani-cli
-
-
+```
 - Install wget
-
+```
     sudo dnf install wget
-
-
+```
 2. Download and configure the ani-cli-batch scripts
-
+```
     wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch
     wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch-update
     chmod +x ~/ani-cli-batch
     chmod +x ~/ani-cli-batch-update
-
-
+```
 3. Move them to your PATH. Place them in /usr/local/bin to enable seamless updates with ani-cli-batch-update
-
+```
     sudo mv -t /usr/local/bin/ ./ani-cli-batch ./ani-cli-batch-update
-
+```
 ### Android
 
 1. Download and install termux from [f-droid](https://f-droid.org/en/packages/com.termux/)
@@ -90,30 +85,28 @@ b. On RedHat based systems like Fedora and CentOS:
 Warning: Do not install termux from the playstore. Termux's playstore builds are deprecated. If you cannot access f-droid, use [github](https://github.com/termux/termux-app/releases).
 
 2. In termux, install the dependencies
-
+```
     termux-change-repo
-
-
+```
 Then choose OK by pressing the enter key.
 
     pkg update && pkg install grep sed curl wget fzf aria2 ani-cli -y
 
 3. Download and install ani-cli-batch
-
+```
     wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch
     sed -i s_\#\!\/usr\/bin\/env\ bash_\#\!\/data\/data\/com.termux\/files\/usr\/bin\/bash_ ./ani-cli-batch
     chmod +x ./ani-cli-batch
     mv ./ani-cli-batch /data/data/com.termux/files/usr/bin
-
+```
 ## Usage
 
 ### Adding anime to the download queue
 
 1. Run the script in a terminal
-
+```
     ani-cli-batch
-
-
+```
 2. Enter the name of the first anime you want to download after you are prompted for it.
 3. ani-cli-batch will run ani-cli to search for your anime. Let ani-cli do it's job and wait until you have the search results
 4. Remember the serial number / position of your anime in the search results list.
