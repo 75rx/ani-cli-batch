@@ -25,7 +25,8 @@ Fire up the windows terminal or a powershell window and run these commands
 1. Install wsl
 
     wsl --install -d debian
-    
+
+
 Follow the on-screen prompts.
 After the installation completes, close the terminal window, find an app called 'debian' in your start menu and launch it.
 
@@ -41,6 +42,7 @@ In the debian terminal:
     wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch-update
     chmod +x ~/ani-cli-batch
     chmod +x ~/ani-cli-batch-update
+
 
 4. Move them to your PATH to access them from anywhere and enable the update functionality
 
@@ -63,9 +65,11 @@ b. On RedHat based systems like Fedora and CentOS:
     sudo dnf copr enable derisis13/ani-cli
     sudo dnf install ani-cli
 
+
 - Install wget
 
     sudo dnf install wget
+
 
 2. Download and configure the ani-cli-batch scripts
 
@@ -73,6 +77,7 @@ b. On RedHat based systems like Fedora and CentOS:
     wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch-update
     chmod +x ~/ani-cli-batch
     chmod +x ~/ani-cli-batch-update
+
 
 3. Move them to your PATH. Place them in /usr/local/bin to enable seamless updates with ani-cli-batch-update
 
@@ -87,6 +92,7 @@ Warning: Do not install termux from the playstore. Termux's playstore builds are
 2. In termux, install the dependencies
 
     termux-change-repo
+
 
 Then choose OK by pressing the enter key.
 
@@ -106,6 +112,7 @@ Then choose OK by pressing the enter key.
 1. Run the script in a terminal
 
     ani-cli-batch
+
 
 2. Enter the name of the first anime you want to download after you are prompted for it.
 3. ani-cli-batch will run ani-cli to search for your anime. Let ani-cli do it's job and wait until you have the search results
