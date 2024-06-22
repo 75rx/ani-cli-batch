@@ -39,8 +39,8 @@ In the debian terminal:
 ```
     wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch
     wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch-update
-    chmod +x ~/ani-cli-batch
-    chmod +x ~/ani-cli-batch-update
+    chmod +x ./ani-cli-batch
+    chmod +x ./ani-cli-batch-update
 ```
 4. Move them to your PATH to access them from anywhere and enable the update functionality
 ```
@@ -71,8 +71,8 @@ b. On RedHat based systems like Fedora and CentOS:
 ```
     wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch
     wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch-update
-    chmod +x ~/ani-cli-batch
-    chmod +x ~/ani-cli-batch-update
+    chmod +x ./ani-cli-batch
+    chmod +x ./ani-cli-batch-update
 ```
 3. Move them to your PATH. Place them in /usr/local/bin to enable seamless updates with ani-cli-batch-update
 ```
