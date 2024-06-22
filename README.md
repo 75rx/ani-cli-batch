@@ -2,7 +2,7 @@
 An ani-cli wrapper written in BASH to automate downloading different anime
 
 ### Note
-This script is just a wrapper for the ani-cli application developed by pystardust. You need to have the original ani-cli application installed along with it's dependencies, to use this. Find it [here](https://github.com/pystardust/ani-cli)
+This script is just a wrapper for the ani-cli application developed by pystardust. You need to have the original ani-cli application installed along with it's dependencies, to use this. Installation of the necessary parts of ani-cli is taken care of, in the installation instructions, but you can find the official repository [here](https://github.com/pystardust/ani-cli)
 
 ## Installation
 
