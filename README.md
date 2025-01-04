@@ -143,7 +143,7 @@ Refer to ani-cli's official repository for instructions on uninstalling ani-cli.
 
 ### On Android
 
-Simply uninstall Termux to get rid of everything, or `sudo rm /data/data/com.termux/files/usr/bin/ani-cli-batch` to remove ani-cli-batch from your termux environment.
+Simply uninstall Termux to get rid of everything, or `rm /data/data/com.termux/files/usr/bin/ani-cli-batch` to remove ani-cli-batch from your termux environment.
 
 Refer to ani-cli's official repository for instructions on uninstalling ani-cli.
 
