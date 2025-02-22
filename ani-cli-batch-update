@@ -1,16 +1,24 @@
 # This script updates the ani-cli-batch script
 
-echo "Downloading update"
+rootfolder="~/.ani-cli-batch"
+setupfolder=$rootfolder"/setup"
+targets="ani-cli-batch ani-cli-batch-update rofi"
 
-cd ~
-wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch -q
-wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch-update -q
-chmod +x ~/ani-cli-batch
-chmod +x ~/ani-cli-batch-update
+echo "Creating config directory"
+mkdir -p $setupfolder
 
-echo "Done!"; echo ""
+cd $setupfolder
 
-echo "Please enter the sudo password to finish updating the script in your PATH"
+echo "Dowloading files"
+for target in $targets; do
+	wget https://raw.githubusercontent.com/75rx/ani-cli-batch/$target -q
+echo "Done!"
+
+echo "Installing"
+chmod +x $setupfolder/*
+
+echo "Please enter the sudo password to add the program to your PATH"
 echo ""
 
-sudo mv -t /usr/local/bin/ ~/ani-cli-batch ~/ani-cli-batch-update && echo "sudo access granted. Update successful"
+mkdir $rootfolder/falsebin
+mv $setupfolder/rofi $rootfolder/falsebin/rofi && sudo mv -t /usr/local/bin/ $setupfolder/* && echo "sudo access granted. Update successful"
