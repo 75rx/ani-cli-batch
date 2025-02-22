@@ -5,8 +5,9 @@ This document will keep track of the project and provide relevant documentation.
 ### Refactoring
 - [ ] Use a proper queue management system instead of storing the entire queue in a variable
 - [ ] Change the updater to a installer
-	- [ ] Have the installer make a config directory
-	- [ ] Have the installer populate the config directory properly
+	- [x] Have the installer make a config directory
+	- [x] Have the installer populate the config directory properly
+	- [ ] Rename ani-cli-batch-update ?
 ### Add new features
 - [ ] Support to pass arguments to ani-cli
 - [ ] Support running with the python version of ani-cli
