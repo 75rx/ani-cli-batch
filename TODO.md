@@ -4,7 +4,7 @@ This document will keep track of the project and provide relevant documentation.
 ## To Do
 ### Refactoring
 - [ ] Use a proper queue management system instead of storing the entire queue in a variable
-- [ ] Change the updater to a installer
+- [ ] Change the updater to an installer
 	- [x] Have the installer make a config directory
 	- [x] Have the installer populate the config directory properly
 	- [x] Add Android support
