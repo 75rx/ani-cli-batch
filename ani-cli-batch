@@ -2,182 +2,277 @@
 
 
 
+
+
 # Variables
 
 
-# A few variables that are used multiple times throughout the script
+rootfolder=$HOME"/.ani-cli-batch"
+PATH=$rootfolder"/falsebin":$PATH
 
-BASHLOCATION=$(which bash)
-command="ani-cli -d"
+anime_count=-1
+declare -a anime_name
+declare -A anime_position
+declare -A episode_range
+declare -A anime_quality
+declare -A download_location
+declare -A ani_cli_arguments
+
+exit=0
+
+
+# Parse passed arguments and set global user choice variables
+
+
+# These are variables that are passed to the script that it will use if the user doesn't specify a particular attribute or answers no on a choice question.
+# This let's the user skip answering with the same choice for different anime and just pass a few defaults as arguments.
+# Example: The user can launch ani-cli-batch with --quality 720p and every time the user answers No to "Do you want to specify a download quality?" the script will default to 720p
+
+#default_anime_location=$1
+#default_anime_quality=$2
+
 
 
 # Functions
 
+# Search for the anime and print the search results
+searchanime() {
+	echo "Enter your search query"
+	read searchquery
+	ani-cli $searchquery --rofi #run ani-cli's search function and save the result in ani-cli-batch's config folder using the fake rofi binary in falsebin
+	clear; cat $rootfolder"/searchresults"
+	echo ""
+	#return "$searchquery"
+}
 
-# Display a menu
+# Save the user's query to anime_name at anime_count
+savequery() {
+anime_name[$anime_count]="$searchquery"
+}
 
-# This function draws a menu to get user input. Pass a string of text as the first argument to store the user response in, and then pass the menu entry options as other arguments when calling the function.
-# The function will store the user's choice as the value of a newly created variable, with a name matching the string of text / first argument passed to the function.
+# Ask for and save the current anime's serial number to anime_position at anime_count
+saveserial(){
+	echo "What's your anime's serial number?"
+	read serialnumber
+	anime_position[$anime_count]=$serialnumber
+}
 
-function showmenufor() {
-        echo "Choose an option by selecting it's S.no:"
-        # Define variables
-        # i is used to iterate over the arguments passed to the function and to display them as a numbered list
-        # j is used to skip displaying the first argument as it isn't an option to be displayed but a way to store the user response
-        local i=1
-        local j=1
-        # Draw a menu and list the options
-        for option in "$@"; do
-                # This if condition makes the for loop skip displaying the first argument as a menu entry because j=1 when the loop is running for the first arg, but will have changed to 2 by the time it runs for the 2nd arg in $@.
-                if [[ $j -eq 1 ]]; then
-                        let "j++"
-                else
-                        echo"";
-                        echo -n "   $i."; echo "$option"
-                        echo;
-                        let "i++"
-                fi
-        done
-        # Read the user choice
-        read -n 1 choice
-        echo ""
-        # Iterate over the arguments (except the first one) using the variable 'a' to locate the user's choice
-        local a=1
-        local b=1
-        for option in "$@"; do
-                if [[ $b -eq 1 ]]; then
-                        let "b++"
-                else
-                        if [[ $a -eq $choice ]]; then
-                                # On finding the choice, set it to the 1st argument so it can be accessed outside of the function
-                                firstarg=$1
-                                eval "$(echo "$firstarg")=$option"
-                                break
-                        else
-                                let "a++"
-                        fi
-                fi
-        done
+# Set's the download range for anime corresponding to anime_count to the provided range (format:startep-endep), or to all episodes if no range is provided.
+# Uses the currently saved search results. Only call after searchanime and saveserial
+setrange() {
+	episoderange=$1
+	if [ -z $episoderange ]; then
+		# Download all
+		# Read the line containing the correct search result and store everything before the episode count to remove it later
+		pretext=$(sed -n '${anime_position["$anime_count"]}p' $rootfolder/searchresults | sed s/\([0-9]*\ episodes\)//)
+		# Remove everthing before the episode count to get the episode count
+		episodecount=$(sed -n '${anime_position["$anime_count"]}p' $rootfolder/searchresults | sed s/"$pretext"// | sed s/\(// | sed s/\ episodes\)//)
+		episode_range[$anime_count]="-r 1-$episodecount"
+		echo "Downloading all episodes (1-$episodecount)"
+		echo ""
+	else
+		# download specified
+		episode_range[$anime_count]="-r $episoderange"
+	fi
 }
 
 
 
-# Code
+# Main
 
 
-clear; echo "This is a wrapper for ani-cli that makes it easier to batch download multiple anime"
+# Print the main menu
+while [ $exit -eq 0 ]; do
+	clear
+	echo "This is a wrapper for ani-cli that makes it easier to batch download multiple anime"
+	echo "What do you want to do?"
+	echo "1.Add anime to the download queue"
+	echo "2.Manage queue / Edit added entries"
+	echo "3.Construct and print a download command for ani-cli"
+	echo "4.Download queued anime"
+	echo "5. Cancel all operations and quit"
+	echo "6. Check for updates"
+	echo ""
 
+	read instruction -n 1
+	echo ""
 
-# Selecting a download location
-# The code for selecting a download location was contributed by butyraldehyde on github, so I'm thanking them here!
+	case $instruction in
+ 		1|add)
+			clear
+			echo "1. Quick add (Quickly add multiple anime to the download queue with the same preferences (quality, download location, etc..)"
+			echo "2. Customise and add (Select different settings for each anime)"
+			echo ""
 
-echo; echo "Please provide a download location or press enter to download into the current directory"
-echo "Please note, I don't check permissions yet!"
+			read -n 1 addtype
+			echo ""
 
-# TODO: Check perms
+			case $addtype in
+				1|batch)
+					# Ask for and save the download quality
+					echo "Choose a download quality or leave empty to default to the highest"
+					echo "Available choices: 240p 360p 480p 720p 1080p"
+					read batchquality
 
-directory="$(pwd)"
-read directory
-while [ ! -d $directory ]; do
-        echo "Either I don't know what this is or it's not a directory."
-        echo "Please provide a download location:"
-        read directory
-done
-if [[ "" == "$directory" ]]; then
-        echo "Keeping current directory."
-else
-        echo "Changing to $directory."
-        cd $directory
-fi
-echo
+					if [[ -z $batchquality ]]; then
+						batchquality="-q 1080p"
+					else
+						batchquality="-q $batchquality"
+					fi
 
+					# Ask for a download location
+					while true; do
+						echo "Do you want to specify a download location? (y/N) ('No' downloads to your downloads folder)"
+						read -n 1 setdownloadloc
+						echo ""
+						if [[ "$setdownloadloc" == "y" || "$setdownloadloc" == "Y" ]];then
+							#Ask for a download location
+							echo "Where do you want to download to? (Provide the absolute location / wrt root. Eg:/home/user/desktop)"
+							echo ""
+							read batchlocation
+							batchlocation="cd $batchlocation && "
+							break
+						elif [[ -z $setdownloadloc || "$setdownloadloc" == "n" || "$setdownloadloc" == "N" ]]; then
+							# Download to downloads
+							mkdir -p $HOME/Downloads/ani-cli-batch && batchlocation="cd $HOME/Downloads/ani-cli-batch && "
+							break
+						else
+							echo "Unknown choice. Please choose a valid option"
+							echo ""
+						fi
+					done
 
-# Asking for instructions
+					# Ask for and set the episode range
+					echo "Do you want to download all episodes for these shows? (Y/n) (Answer with n to individually specify what epiodes to download later)"
+					read -n 1 downloadall
+					echo ""
 
-addanime=true
-validchoice=false
+					if [[ "$downloadall" -eq "n" || "$downloadall" -eq "N" ]];then
+						downloadall=false
+					else
+						downladall=true
+					fi
 
-while [ $addanime == true ]
-do
-   echo "What do you want to download?"
-   read animename
+					# Ask for common extra ani-cli arguments
+					echo "List arguments you want to pass to ani-cli here. Arguments will be passed as is. Ex: --dub"
+					echo "WARNING: Any commands passed here WILL BE EXECUTED. Eg: Doing --dub; rm -rf $HOME will first download your anime and then will destroy your home folder."
+					echo "Only use this field to pass extra arguments to ani-cli. Do not issue commands."
+					read batcharguments
 
-   echo; echo "Running ani-cli's search operation"
-   echo "Exit after finding the correct S.no and episode range"
-   echo ""
-   ani-cli -d $animename
-   echo ""
+					# Ask for anime names. Perform search and queue them using defined defaults
+					while true; do
+						# Give an id to the anime currently being searched
+						((anime_count++))
 
-   echo "What number on the list was your anime?"
-   read selection
+						# Perform an ani-cli search, get and display results
+						searchanime
 
-   command=$(echo $command $animename -S $selection)
+						# Save the search query using the anime id (anime_count)
+						savequery
 
-   echo; echo "What range of episodes do you want to download? (startep-endep)(eg:- 1-17)"
-   read range
+						# Ask for and save the serial number of the anime from the search results
+						saveserial
 
-   command=$(echo $command -r $range)
+						# Ask for and set the episode range
+						if $downloadall; then
+							setrange
+						else
+							echo "What range of episodes do you want to download? (startep-endep) (ex:1-17)"
+							read range
+							echo "$range" | setrange
+						fi
 
-   echo; echo "Do you want to specify a download quality (default is 1080p)? (y/n)"
-   echo "(ani-cli will default to the highest quality if specified video quality is not found)"
-   read -n 1 qualitychoice
+						# Save the download quality
+						anime_quality[$anime_count]="$batchquality"
 
-   if [ $qualitychoice == y ]; then
-      echo; echo
-      showmenufor quality 240p 360p 480p 720p
-      command=$(echo $command -q $quality)
-   else 
-      echo
-   fi
+						# Save the download location
+						download_location[$anime_count]="$batchlocation"
 
-   until [ $validchoice == true ]
-   do
-      clear
-      echo "What do you want to do?"
-      echo "1.Add more anime (add)"
-      echo "2.Start Downloading (download)"
-      echo "3.Print the download command (print)"
-      echo "4.Cancel and quit (cancel)"
-      read instruction
-      #showmenufor instruction "Add\ more\ anime" "Start\ downloading" "Print\ the\ saved\ download\ command" "Cancel\ and\ quit"
+						# Save any ani-cli arguments
+						ani_cli_arguments[$animecount]="$batcharguments"
 
-      case $instruction in
-         1|add)
-            command=$(echo $command "; ani-cli -d" )
-            addanime=true
-            validchoice=true
-            ;;
-         2|download)
-            PATH=$PATH "$BASHLOCATION" -c "$command"
-            if [ $? == 0 ]; then
-               echo "Download Successful"
-               addanime=false
-            else
-               echo "Download failed! Printing the download command."
-               echo $command
-               addanime=false
-            fi
-            validchoice=true
-            ;;
-         3|print)
-            clear && echo "Printing the download command."
-            echo; echo $command
-            validchoice=false
-            echo; echo "Press any key to continue."
-            read -n 1 whyisdeadpoolsocool
-            ;;
-         4|cancel)
-            echo "Cancelling pending operations and quitting."
-            addanime=false
-            validchoice=true
-            ;;
-         *)
-            echo "Please make a valid choice!"
-            echo "Valid choices include 1, 2, 3, 4, add, download, print and cancel. Press any key to continue"
-            validchoice=false
-            read -n 1 icannotkeepcomingupwithcoolvariablenamessothisonewillbecalleddattebayo
-            ;;
-      esac
-   done
-   validchoice=false
+						# Ask the user if they are done adding anime and break the while loop
+						echo "Add more anime? (y/n)"
+						read batchadd -n 1
+						echo ""
+
+						if [[ "$batchadd" == "y" || "$batchadd" == "Y" ]]; then
+							clear
+						else
+							break
+						fi
+					done
+					;;
+				2|Customised)
+					# Give an id to the anime currently being searched
+					((anime_count++))
+
+					# Perform an ani-cli search, get and display results
+					searchanime
+
+					# Save the search query using the anime id (anime_count)
+					savequery
+
+					# Ask for and save the serial number of the anime from the search results
+					saveserial
+
+					# Ask for and set the episode range
+					setrange
+
+					# Ask for and set the download quality
+					echo "Do you want to select a download quality? (y/n) (Default is 1080p)"
+					read selectquality -n 1
+					if [ selectquality == y ]; then
+						# List quality choices and read one
+						echo ""
+					else
+						echo ""
+					fi
+					
+					# set download location
+					# ask for extra arguments
+					# clear search results
+					;;
+			esac
+			;;
+	 	2|edit)
+	 		echo "Anime currently in queue"
+	 		echo ""
+			i=0
+    		while [ $i -le $anime_count]; do
+    			((i++))
+				echo "$anime_count ${anime_name[$anime_count]}"
+				echo ""
+			done
+			echo "Select an anime to view and edit chosen preferences"
+			;;
+		3|print)
+	   		for anime in "${anime_name[@]}"; do
+				# To-do : Implement download location support
+				echo "ani-cli -d $anime ${anime_position[$anime]} ${anime_quality[$anime]} ${episode_range[$anime]} ${ani_cli_arguments[$anime]}"
+			done
+			;;
+		4|download)
+			
+			;;
+		5|cancel)
+			
+			;;
+		6|update)
+			echo "Running an update check"
+			cd ~ && ani-cli-batch-update
+			if [ $? -eq 0 ]; then
+				echo "Update successful. Please restart ani-cli-batch"
+				echo "Note: If you face any errors after updating, please update a second time!"
+			else
+				echo "Update failed!"
+			fi
+			;;
+		*)
+			echo "Please make a valid choice!"
+			echo "Valid choices include 1, 2, 3, 4, 5 and 6. Press any key to continue"
+			exit=0
+			read -n 1 icannotkeepcomingupwithcoolvariablenames
+			;;
+	esac
 done

@@ -1,24 +1,31 @@
 # This script updates the ani-cli-batch script
 
-rootfolder="~/.ani-cli-batch"
+rootfolder=$HOME"/.ani-cli-batch"
 setupfolder=$rootfolder"/setup"
 targets="ani-cli-batch ani-cli-batch-update rofi"
 
+if [[ "$(uname -o)" == "Android" ]]; then
+	PATH_location="/data/data/com.termux/files/usr/bin"
+else
+	PATH_location="/usr/local/bin"
+fi
+
 echo "Creating config directory"
 mkdir -p $setupfolder
-
-cd $setupfolder
+echo ""
 
 echo "Dowloading files"
+cd $setupfolder
 for target in $targets; do
 	wget https://raw.githubusercontent.com/75rx/ani-cli-batch/$target -q
 echo "Done!"
+echo ""
 
 echo "Installing"
 chmod +x $setupfolder/*
 
-echo "Please enter the sudo password to add the program to your PATH"
+echo "Please enter your sudo password to add ani-cli-batch to PATH"
 echo ""
 
 mkdir $rootfolder/falsebin
-mv $setupfolder/rofi $rootfolder/falsebin/rofi && sudo mv -t /usr/local/bin/ $setupfolder/* && echo "sudo access granted. Update successful"
+mv $setupfolder/rofi $rootfolder/falsebin/rofi && sudo mv -t $PATH_location $setupfolder/* && exit 0 || exit 1

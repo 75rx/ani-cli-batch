@@ -7,9 +7,10 @@ This document will keep track of the project and provide relevant documentation.
 - [ ] Change the updater to a installer
 	- [x] Have the installer make a config directory
 	- [x] Have the installer populate the config directory properly
+	- [x] Add Android support
 	- [ ] Rename ani-cli-batch-update ?
 ### Add new features
 - [ ] Support to pass arguments to ani-cli
 - [ ] Support running with the python version of ani-cli
 - [ ] Add support for a download destination argument
-- [ ] Add a check for updates option in the menu
+- [x] Add a check for updates option in the menu
