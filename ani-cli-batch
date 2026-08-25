@@ -120,6 +120,7 @@ do
 
    echo; echo "Do you want to specify a download quality (default is 1080p)? (y/n)"
    read -n 1 qualitychoice
+   echo ""
    echo "ani-cli will default to the highest quality if specified video quality is not found"
 
    if [ $qualitychoice == y ]; then
