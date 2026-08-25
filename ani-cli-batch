@@ -119,13 +119,22 @@ do
    command=$(echo $command -r $range)
 
    echo; echo "Do you want to specify a download quality (default is 1080p)? (y/n)"
-   echo "(ani-cli will default to the highest quality if specified video quality is not found)"
    read -n 1 qualitychoice
+   echo "ani-cli will default to the highest quality if specified video quality is not found"
 
    if [ $qualitychoice == y ]; then
       echo; echo
       showmenufor quality 240p 360p 480p 720p
       command=$(echo $command -q $quality)
+   else 
+      echo
+   fi
+
+   echo "Do you want to download dubbed? (y/n)"
+   read -n 1 dubbed
+
+   if [ $dubbed == y ]; then
+      command=$(echo $command --dub)
    else 
       echo
    fi
