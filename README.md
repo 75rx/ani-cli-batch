@@ -95,8 +95,14 @@ Then choose OK by pressing the enter key.
 3. Download and install ani-cli-batch
 ```
     wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch
+```
+```
     sed -i s_\#\!\/usr\/bin\/env\ bash_\#\!\/data\/data\/com.termux\/files\/usr\/bin\/bash_ ./ani-cli-batch
+```
+```
     chmod +x ./ani-cli-batch
+```
+```
     mv ./ani-cli-batch /data/data/com.termux/files/usr/bin
 ```
 ## Usage
