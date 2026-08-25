@@ -84,26 +84,31 @@ b. On RedHat based systems like Fedora and CentOS:
 
 Warning: Do not install termux from the playstore. Termux's playstore builds are deprecated. If you cannot access f-droid, use [github](https://github.com/termux/termux-app/releases).
 
-2. In termux, install the dependencies
+2. Set up termux
+```
+termux-setup-storage
+```
 ```
     termux-change-repo
 ```
 Then choose OK by pressing the enter key.
-
+3. Install the dependencies
+```
     pkg update && pkg install grep sed curl wget fzf aria2 ani-cli -y
+```
 
 3. Download and install ani-cli-batch
 ```
-    wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch
+ wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch
 ```
 ```
-    sed -i s_\#\!\/usr\/bin\/env\ bash_\#\!\/data\/data\/com.termux\/files\/usr\/bin\/bash_ ./ani-cli-batch
+ sed -i s_\#\!\/usr\/bin\/env\ bash_\#\!\/data\/data\/com.termux\/files\/usr\/bin\/bash_ ./ani-cli-batch
 ```
 ```
-    chmod +x ./ani-cli-batch
+ chmod +x ./ani-cli-batch
 ```
 ```
-    mv ./ani-cli-batch /data/data/com.termux/files/usr/bin
+ mv ./ani-cli-batch /data/data/com.termux/files/usr/bin
 ```
 ## Usage
 
@@ -119,16 +124,23 @@ Then choose OK by pressing the enter key.
 5. DO NOT select your anime from the search results. This will lead to ani-cli loading and downloading just that single anime. Instead, close ani-cli by pressing `CTRL`+`C` together, to get back to ani-cli-batch from ani-cli. You can also crash ani-cli by typing an invalid choice (eg: "exit" or "thisisdefinitelythenameofaverynormalanimethatexists") into ani-cli's textbox.
 6. Enter the position / serial number of your anime from the previous screen, once you get back to ani-cli-batch
 7. Follow the on-screen instructions to specify download quality and other information
+8. For termux users: type `ls` to view the downloaded files and `mv filename storage/shared/` to move the file to your internal storage
 
 ### Updating the script
 
 You can run `ani-cli-batch-update` on Windows and Linux to automatically update the script. Update functionality is not supported on android yet. So just follow the installation instructions again, i.e., copy paste these four lines of code into termux:
-
-    wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch
-    sed -i s_\#\!\/usr\/bin\/env\ bash_\#\!\/data\/data\/com.termux\/files\/usr\/bin\/bash_ ./ani-cli-batch
-    chmod +x ./ani-cli-batch
-    mv ./ani-cli-batch /data/data/com.termux/files/usr/bin
-
+```
+ wget https://raw.githubusercontent.com/75rx/ani-cli-batch/main/ani-cli-batch
+```
+```
+ sed -i s_\#\!\/usr\/bin\/env\ bash_\#\!\/data\/data\/com.termux\/files\/usr\/bin\/bash_ ./ani-cli-batch
+```
+```
+ chmod +x ./ani-cli-batch
+```
+```
+ mv ./ani-cli-batch /data/data/com.termux/files/usr/bin
+```
 ## Uninstalling
 
 ### On Windows
